@@ -1,22 +1,14 @@
 import Foundation
 
 func solution(_ n:Int) -> Int {
-    var result = 0
-    
     if n % 2 == 0 {
-        for i in 1 ... n {
-            if i % 2 == 0 {
-                result += i*i
-            }
+        return stride(from: 2, through: n, by: 2).reduce(0) { x, y in
+            x + y * y
         }
     }
     else {
-        for i in 1 ... n {
-            if i % 2 == 1 {
-                result += i
-            }
-        } 
+        return stride(from: 1, through: n, by: 2).reduce(0) { x, y in
+            x + y
+        }
     }
-    
-    return result
 }
