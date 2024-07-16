@@ -2,31 +2,26 @@ import Foundation
 
 func solution(_ code:String) -> String {
     var mode = 0
-    var ret: [Character] = []
-    var codeArr = Array(code)
+    var ret = ""
     
-    for i in 0 ..< code.count {
+    code.enumerated().forEach { (index, element) in
         if mode == 0 {
-            if codeArr[i] == "1" {
+            if element == "1" {
                 mode = 1
-                continue
             }
-            
-            if i % 2 == 0 {
-                ret.append(codeArr[i])
+            else if index % 2 == 0 {
+                ret += String(element)
             }
         }
         else {
-            if codeArr[i] == "1" {
+            if element == "1" {
                 mode = 0
-                continue
             }
-            
-            if i % 2 != 0 {
-                ret.append(codeArr[i])
-            } 
+            else if index % 2 == 1 {
+                ret += String(element)
+            }
         }
     }
     
-    return ret.count == 0 ? "EMPTY" : String(ret)
+    return ret == "" ? "EMPTY" : ret
 }
